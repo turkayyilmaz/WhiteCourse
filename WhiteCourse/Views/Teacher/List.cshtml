@@ -1,0 +1,40 @@
+@model IEnumerable<Teacher>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>Teacher List</h2>
+<hr>
+<a href="/Teacher/Create" class="btn btn-dark btn-sm mb-3">Create Teacher</a>
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 75px;">Id</th>
+                <th>@Html.DisplayNameFor(m => m.TeacherName)</th>
+                <th>@Html.DisplayNameFor(m => m.TeacherSurname)</th>
+                <th>@Html.DisplayNameFor(m => m.TeacherEmail)</th>
+                <th>@Html.DisplayNameFor(m => m.TeacherPhone)</th>
+                <th>@Html.DisplayNameFor(m => m.StartDate)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@*buraya for döngüsü gelecek*@</td>
+                    <td>@Html.DisplayFor(x => item.TeacherName)</td>
+                    <td>@Html.DisplayFor(x => item.TeacherSurname)</td>
+                    <td>@Html.DisplayFor(x => item.TeacherEmail)</td>
+                    <td>@Html.DisplayFor(x => item.TeacherPhone)</td>
+                    <td>@Html.DisplayFor(x => item.StartDate)</td>
+                    <td>
+                        <a asp-controller="Teacher" asp-action="Edit" asp-route-id="@item.TeacherId" class="btn btn-secondary">Edit</a>
+                        <a asp-controller="Teacher" asp-action="Delete" asp-route-id="@item.TeacherId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

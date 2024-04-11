@@ -1,0 +1,39 @@
+@model IEnumerable<Course>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>Course List</h2>
+<hr>
+<a href="/Course/Create" class="btn btn-dark btn-sm mb-3">Add a Course</a>
+<div class="row">
+   
+    @foreach (var item in Model)
+    {
+        <div class="col-3">
+            <a asp-controller="Course" asp-action="CourseDetail" asp-route-id="@item.CourseId" style="text-decoration: none;">
+            <div class="card" style="width: 18rem;">
+                <img src="~/img/@item.CourseImageUrl" class="card-img-top" style="height: 10rem;" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">@item.CourseName</h5>
+                    @{
+                        string Desc = item.CourseDescription.Length > 79 ? item.CourseDescription.Substring(0,79) + "..." : item.CourseDescription;
+                    }
+                    <p class="card-text text-muted">@Desc</p>
+                    <p class="card-text text-muted mb-4">@item.Teacher.TeacherFullName</p>
+                    <a asp-controller="Course" asp-action="Edit" asp-route-id="@item.CourseId"
+                        class="btn btn-sm">
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span></a>
+                    <a asp-controller="Course" asp-action="Delete" asp-route-id="@item.CourseId"
+                        class="btn btn-sm">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span></a>
+                </div>
+            </div>
+            </a>
+        </div>
+    }
+</div>

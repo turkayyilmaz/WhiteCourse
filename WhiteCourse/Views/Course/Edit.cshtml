@@ -1,0 +1,42 @@
+@model Course
+@{
+    ViewData["Title"] = "Edit";
+}
+<h2>Edit Student</h2>
+<hr>
+<div class="row">
+    <div asp-validation-summary="All"></div>
+    <div class="col-8">
+        <form asp-controller="Course" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="CourseId">
+            <div class="mb-3">
+                <label asp-for="CourseName" class="form-label"></label>
+                <input asp-for="CourseName" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="CourseDescription" class="form-label"></label>
+                <input asp-for="CourseDescription" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="CourseImageUrl" class="form-label"></label>
+                <input asp-for="CourseImageUrl" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label asp-for="TeacherId" class="form-label">Teacher*</label>
+                <select asp-for="TeacherId" asp-items="ViewBag.Teachers" class="form-select"></select>
+                <span asp-validation-for="TeacherId" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-secondary">Edit</button>
+        </form>
+    </div>
+    <div class="col-4">
+        <h4>Students</h4>
+        <hr>
+        <ul>
+            @foreach (var item in Model.CourseRegisters)
+            {
+                <li>@item.Student.StudentFullName</li>
+            }
+        </ul>
+    </div>
+</div>

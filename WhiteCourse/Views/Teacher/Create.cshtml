@@ -1,0 +1,28 @@
+@model Teacher
+@{
+    ViewData["Title"] = "Create";
+}<h2>Create Teacher</h2>
+<hr>
+<form asp-controller="Teacher" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="TeacherName" class="form-label"></label>
+        <input asp-for="TeacherName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherSurname" class="form-label"></label>
+        <input asp-for="TeacherSurname" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherEmail" class="form-label"></label>
+        <input asp-for="TeacherEmail" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="TeacherPhone" class="form-label"></label>
+        <input asp-for="TeacherPhone" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="StartDate" class="form-label"></label>
+        <input asp-for="StartDate" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-secondary">Create</button>
+</form>
